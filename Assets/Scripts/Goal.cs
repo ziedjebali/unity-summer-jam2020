@@ -11,7 +11,7 @@ public class Goal : MonoBehaviour
     // TODO: Find a better way, some edge cases don't work (e.g. when clone is destroyed while inside the goal)
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer(k_CharacterLayerName))
+        if (IsPlayerOrClone(other))
         {
             ++m_InsideCount;
             
@@ -26,7 +26,7 @@ public class Goal : MonoBehaviour
     }
     void OnTriggerExit (Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer(k_CharacterLayerName))
+        if (IsPlayerOrClone(other))
         {
             --m_InsideCount;
             if (m_InsideCount == 0)
@@ -36,5 +36,10 @@ public class Goal : MonoBehaviour
                 IsPressed = false;
             }
         }
+    }
+
+    bool IsPlayerOrClone(Collider other)
+    {
+        return other.gameObject.layer == LayerMask.NameToLayer(k_CharacterLayerName) && !other.CompareTag("Shadow");
     }
 }

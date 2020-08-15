@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Goal
+  - Shadow
   layers:
   - Default
   - TransparentFX

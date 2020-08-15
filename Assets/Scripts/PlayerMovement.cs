@@ -18,15 +18,17 @@ public class PlayerMovement : MonoBehaviour
     Vector3 m_Movement;
     float m_BaseDrag;
     
-    // Cloning
-    Queue<MovementInfo> m_AccumulatedMovement = new Queue<MovementInfo>();
-    int m_MaxAccumulatedMovementCount;
+    public Queue<MovementInfo> m_AccumulatedMovement { get; private set; }
+    public Queue<MovementInfo> m_ShadowMovement { get; private set; }
+    public int m_MaxMovementCount { get; private set; }
 
     void Start()
     {
+        m_AccumulatedMovement = new Queue<MovementInfo>();
+        m_ShadowMovement = new Queue<MovementInfo>();
         m_Rigidbody = GetComponent<Rigidbody>();
         m_BaseDrag = m_Rigidbody.drag;
-        m_MaxAccumulatedMovementCount = (int)(m_CloneTimer * 50); // 50 calls per second of FixedUpdate
+        m_MaxMovementCount = (int)(m_CloneTimer * 50); // 50 calls per second of FixedUpdate
     }
 
     void Update()
@@ -75,8 +77,12 @@ public class PlayerMovement : MonoBehaviour
 
     void AccumulateMovement(MovementInfo nextMovement)
     {
-        if (m_AccumulatedMovement.Count > m_MaxAccumulatedMovementCount)
+        if (m_AccumulatedMovement.Count == m_MaxMovementCount)
             m_AccumulatedMovement.Dequeue();
         m_AccumulatedMovement.Enqueue(nextMovement);
+        
+        if (m_ShadowMovement.Count == m_MaxMovementCount)
+            m_ShadowMovement.Dequeue();
+        m_ShadowMovement.Enqueue(nextMovement);
     }
 }
