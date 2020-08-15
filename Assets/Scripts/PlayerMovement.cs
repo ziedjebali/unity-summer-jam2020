@@ -17,18 +17,12 @@ public class PlayerMovement : MonoBehaviour
     // Movement
     Vector3 m_Movement;
     float m_BaseDrag;
-    
-    // TODO: remove both if not using shadow anymore
-    public Queue<MovementInfo> ShadowMovement { get; private set; }
-    public int MaxMovementCount { get; private set; }
 
-    
+
     void Start()
     {
-        ShadowMovement = new Queue<MovementInfo>();
         m_Rigidbody = GetComponent<Rigidbody>();
         m_BaseDrag = m_Rigidbody.drag;
-        MaxMovementCount = m_PlayerTrail.TrailMaxCount * 50; // 50 calls per second of FixedUpdate
     }
 
     void Update()
@@ -64,8 +58,6 @@ public class PlayerMovement : MonoBehaviour
             moveInfo.forceValue = forceToAdd;
         }
 
-        // TODO: Remove when removing shadow
-//        AccumulateMovement(moveInfo);
         m_PlayerTrail.AddTrail(moveInfo);
     }
 
@@ -76,12 +68,4 @@ public class PlayerMovement : MonoBehaviour
         var cm = clone.GetComponent<CloneMovement>();
         cm.presetMovements = new Queue<MovementInfo>(m_PlayerTrail.GetTrailMovement());
     }
-    
-//    TODO: Remove when removing shadow
-//    void AccumulateMovement(MovementInfo nextMovement)
-//    {
-//        if (m_ShadowMovement.Count == m_MaxMovementCount)
-//            m_ShadowMovement.Dequeue();
-//        m_ShadowMovement.Enqueue(nextMovement);
-//    }
 }
