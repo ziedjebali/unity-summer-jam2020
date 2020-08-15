@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a61cfc954245a704c932d1da1bf2b8cf, type: 2}
+  - {fileID: 2100000, guid: e3d739074a85bad4eb389217eeffa26a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MoveSpeed: 5
-  m_CloneMovementTimer: 3
+  m_CloneTimer: 3
   m_Rigidbody: {fileID: 3806602547167471611}
   m_ClonePrefab: {fileID: 2578496119032950130, guid: d62e64a5ef588ba4e898740b2cfa5fd5,
     type: 3}
