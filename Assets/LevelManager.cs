@@ -8,10 +8,10 @@ public class LevelManager : MonoBehaviour
     public Rect cam1Rect, cam2Rect, cam3Rect;
 
     public GameObject Level1, Level2, Level3;
-    public AudioSource SwitchSound;
+    public AudioSource SwitchSound, LevelFinished, BackgroundMusic;
 
 
-    public GameObject Level1Player, Level2Player, Level3Player;
+    public GameObject Level1Player, Level2Player, Level3Player, BaseCam;
 
     public int levelCount = 1;
     // Start is called before the first frame update
@@ -47,6 +47,13 @@ public class LevelManager : MonoBehaviour
             Level3.SetActive(true);
             Level3Player.GetComponent<PlayerMovement>().MovementEnabled = true;
             levelCount++;
+        }
+        else
+        {
+     
+            BaseCam.SetActive(true);
+            BackgroundMusic.Stop();
+            LevelFinished.Play();
         }
         
     }
