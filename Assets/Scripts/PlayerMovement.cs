@@ -1,24 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] float m_MoveSpeed = 5f;
+    [SerializeField] private float m_Force = 20f;
+    [SerializeField] float m_MaxSpeed = 10f;
+    [SerializeField] float m_Deceleration = 5f;
     
     [Header("Cloning")]
     [SerializeField] float m_CloneTimer = 3f; // In seconds
-
-    [Header("References")]
-    [SerializeField] Rigidbody m_Rigidbody = null;
     [SerializeField] GameObject m_ClonePrefab = null;
 
+    Rigidbody m_Rigidbody;
+    
     Vector3 m_Movement;
-    Queue<Vector3> m_AccumulatedMovement = new Queue<Vector3>();
+    float m_BaseDrag;
+    
+    // Cloning
+    Queue<MovementInfo> m_AccumulatedMovement = new Queue<MovementInfo>();
     int m_MaxAccumulatedMovementCount;
 
     void Start()
     {
+        m_Rigidbody = GetComponent<Rigidbody>();
+        m_BaseDrag = m_Rigidbody.drag;
         m_MaxAccumulatedMovementCount = (int)(m_CloneTimer * 50); // 50 calls per second of FixedUpdate
     }
 
@@ -34,12 +41,27 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 nextMovement = m_Movement * m_MoveSpeed * Time.fixedDeltaTime;
-        m_Rigidbody.MovePosition(m_Rigidbody.position + nextMovement);
+        MovementInfo moveInfo;
+        
+        if (Mathf.Approximately(m_Movement.x, 0.0f) && Mathf.Approximately(m_Movement.z, 0.0f))
+        {
+            m_Rigidbody.drag = m_Deceleration;
+            
+            moveInfo.dragValue = m_Deceleration;
+            moveInfo.forceValue = new Vector3();
+        }
+        else
+        {
+            m_Rigidbody.drag = m_BaseDrag;
+            
+            var forceToAdd = m_Rigidbody.velocity.magnitude < m_MaxSpeed ? m_Movement * m_Force: new Vector3();
+            m_Rigidbody.AddForce(forceToAdd);
+            
+            moveInfo.dragValue = m_BaseDrag;
+            moveInfo.forceValue = forceToAdd;
+        }
 
-        if (m_AccumulatedMovement.Count > m_MaxAccumulatedMovementCount)
-            m_AccumulatedMovement.Dequeue();
-        m_AccumulatedMovement.Enqueue(nextMovement);
+        AccumulateMovement(moveInfo);
     }
 
     void SpawnClone()
@@ -47,7 +69,14 @@ public class PlayerMovement : MonoBehaviour
         var playerTransform = transform; // apparently multiple property access is inefficient
         var clone = Instantiate(m_ClonePrefab, playerTransform.position, playerTransform.rotation);
         var cm = clone.GetComponent<CloneMovement>();
-        cm.presetMovements = new Queue<Vector3>(m_AccumulatedMovement);
-        m_AccumulatedMovement = new Queue<Vector3>();
+        cm.presetMovements = new Queue<MovementInfo>(m_AccumulatedMovement);
+        m_AccumulatedMovement = new Queue<MovementInfo>();
+    }
+
+    void AccumulateMovement(MovementInfo nextMovement)
+    {
+        if (m_AccumulatedMovement.Count > m_MaxAccumulatedMovementCount)
+            m_AccumulatedMovement.Dequeue();
+        m_AccumulatedMovement.Enqueue(nextMovement);
     }
 }

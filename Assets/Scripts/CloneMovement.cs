@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CloneMovement : MonoBehaviour
 {
-    public Queue<Vector3> presetMovements;
+    public Queue<MovementInfo> presetMovements;
 
     Rigidbody rb;
     
@@ -16,6 +16,10 @@ public class CloneMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (presetMovements.Any())
-            rb.MovePosition(rb.position +  presetMovements.Dequeue());
+        {
+            var moveInfo = presetMovements.Dequeue();
+            rb.drag = moveInfo.dragValue;
+            rb.AddForce(moveInfo.forceValue);
+        }
     }
 }
