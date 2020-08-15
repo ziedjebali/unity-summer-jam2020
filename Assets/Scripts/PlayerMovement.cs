@@ -24,6 +24,16 @@ public class PlayerMovement : MonoBehaviour
     
     public bool MovementEnabled = false;
     
+    public void ToggleMovement()
+    {
+        if (MovementEnabled)
+        {
+            MovementEnabled = false;
+        }else
+        {
+            MovementEnabled = true;
+        }
+    }
 
     void Start()
     {

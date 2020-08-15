@@ -5,41 +5,16 @@ using UnityEngine;
 public class ButtonController : MonoBehaviour
 {
 
-    public GameObject partner, bridge;
+    public GameObject Button1, Button2, bridge;
 
-    public float activeTimer = 10f;
-    public float timer;
-
-    public bool activated;
-
-    bool startTimer = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        timer = activeTimer;
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
-        if (startTimer)
+        if(Button1.GetComponent<ButtonScript>().active && Button2.GetComponent<ButtonScript>().active)
         {
-            timer -= Time.deltaTime;
-            if (partner.GetComponent<ButtonController>().activated)
-            {
-                Success();
-                startTimer = false;
-            }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player" || other.tag == "Clone")
-        {
-            Debug.Log("Found");
-            activated = true;
-            startTimer = true;
+            Debug.Log("Test");
+            bridge.SetActive(true);
         }
     }
 
