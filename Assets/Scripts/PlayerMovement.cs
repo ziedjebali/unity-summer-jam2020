@@ -55,8 +55,9 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             m_Rigidbody.drag = m_BaseDrag;
-            
-            var forceToAdd = m_Rigidbody.velocity.magnitude < m_MaxSpeed ? m_Movement * m_Force: new Vector3();
+
+            var normalizedMovement = m_Movement.normalized;
+            var forceToAdd = m_Rigidbody.velocity.magnitude < m_MaxSpeed ? normalizedMovement * m_Force : new Vector3();
             m_Rigidbody.AddForce(forceToAdd);
             
             moveInfo.dragValue = m_BaseDrag;
