@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2578496119032950131}
   m_Layer: 8
   m_Name: Clone
-  m_TagString: Untagged
+  m_TagString: Clone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,3 +123,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685a3cd2e4fa0e147b68dc3e54d6d753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  k_EndFramesOmitted: 7
