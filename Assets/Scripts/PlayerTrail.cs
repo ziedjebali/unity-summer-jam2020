@@ -4,71 +4,88 @@ using UnityEngine;
 
 public class PlayerTrail : MonoBehaviour
 {
-    [SerializeField] float m_MaxTrailTimer = 3f;
+    [SerializeField] float m_TrailTimerInSeconds = 2f;
     
     [Header("References")]
-    [SerializeField] GameObject m_TrailPrefab = null;
+    [SerializeField] TrailRenderer m_TrailRenderer = null;
+    [SerializeField] GameObject m_ClonePrefab = null;
     
     bool m_IsTrailing;
-    Queue<GameObject> m_TrailObjects;
+    int m_TrailMaxCount;
     Queue<MovementInfo> m_TrailMovement;
-    
-    public int TrailMaxCount { get; private set; }
 
     
     void Start()
     {
+        m_TrailRenderer = GetComponent<TrailRenderer>();
+        m_TrailRenderer.emitting = false;
+        
         m_IsTrailing= false;
-        m_TrailObjects = new Queue<GameObject>();
         m_TrailMovement = new Queue<MovementInfo>();
         
-        TrailMaxCount = (int)(m_MaxTrailTimer * 50); // 50 calls per second of FixedUpdate
+        m_TrailMaxCount = (int)(m_TrailTimerInSeconds * 50); // 50 calls per second of FixedUpdate
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        if (ShouldStartTrail())
         {
             m_IsTrailing = true;
+            m_TrailRenderer.emitting = true;
             ClearTrail();
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        
+        if (ShouldStopTrail())
+        {
             m_IsTrailing = false;
+            m_TrailRenderer.emitting = false;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SpawnClone();
+        }
     }
-
+    
     public void AddTrail(MovementInfo moveInfo)
     {
         if (m_IsTrailing)
         {
-            var playerTransform = transform; // apparently multiple property access is inefficient
-            var trail = Instantiate(m_TrailPrefab, playerTransform.position, playerTransform.rotation);
-
-            m_TrailObjects.Enqueue(trail);
             m_TrailMovement.Enqueue(moveInfo);
-            
-            if (m_TrailMovement.Count == TrailMaxCount)
-            {
-                Destroy(m_TrailObjects.Dequeue());
+            if (m_TrailMovement.Count > m_TrailMaxCount)
                 m_TrailMovement.Dequeue();
-            }
         }
     }
+    
+    void SpawnClone()
+    {
+        var playerTransform = transform; // apparently multiple property access is inefficient
+        var clone = Instantiate(m_ClonePrefab, playerTransform.position, playerTransform.rotation);
+        var cm = clone.GetComponent<CloneMovement>();
+        cm.SetMovements(new Queue<MovementInfo>(GetTrailMovement()));
+    }
 
-    public Queue<MovementInfo> GetTrailMovement()
+    Queue<MovementInfo> GetTrailMovement()
     {
         var trail = new Queue<MovementInfo>(m_TrailMovement);
         ClearTrail();
         
         return trail;
     }
-
+    
     void ClearTrail()
     {
-        while (m_TrailObjects.Count != 0)
-        {
-            Destroy(m_TrailObjects.Dequeue());
-        }
-        
         m_TrailMovement = new Queue<MovementInfo>();
+        m_TrailRenderer.Clear();
+    }
+
+    bool ShouldStartTrail()
+    {
+        return Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift);
+    }
+
+    bool ShouldStopTrail()
+    {
+        return Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift) || m_TrailMovement.Count == m_TrailMaxCount;
     }
 }
