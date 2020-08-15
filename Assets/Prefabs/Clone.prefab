@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5863891658464375397}
   - component: {fileID: 2572910920343927365}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShadowTrail (Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 2578496119032950129}
   - component: {fileID: 2578496119032950128}
   - component: {fileID: 2578496119032950131}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Clone
   m_TagString: Clone
   m_Icon: {fileID: 0}

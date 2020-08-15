@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Blue 2
   m_Shader: {fileID: 4800000, guid: 275eb5e6d1651d843994a5a0fe5d0ece, type: 3}
-  m_ShaderKeywords: BACKSOLID FRONTSOLID HEIGHT_FOG RIGHTSOLID TOPSOLID _AOUV_UV0
+  m_ShaderKeywords: AO_ON BACKSOLID FRONTSOLID HEIGHT_FOG RIGHTSOLID TOPSOLID _AOUV_UV0
     _GRADIENTSPACE_WORLD_SPACE _GRADSETTINGS_B_USE_GLOBAL _GRADSETTINGS_D_USE_GLOBAL
     _GRADSETTINGS_F_CUSTOM _GRADSETTINGS_L_USE_GLOBAL _GRADSETTINGS_R_CUSTOM _GRADSETTINGS_T_USE_GLOBAL
     _HFOGENABLE_ON _LMAPBLENDINGMODE_ADD _MODE_OPAQUE _SHADING_B_SOLID_COLOR _SHADING_D_VERTEX_COLOR
@@ -18,8 +18,9 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -70,7 +71,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AOEnable: 0
-    - _AOPower: 0
+    - _AOPower: 1
     - _AOuv: 0
     - _AmbientPower: 0
     - _Brightness: 0
@@ -131,7 +132,7 @@ Material:
     - _Shading_T: 1
     - _ShadowBlend: 0.5
     - _ShadowInfluence: 0.5
-    - _ShowAO: 0
+    - _ShowAO: 1
     - _ShowAmbientSettings: 0
     - _ShowBack: 1
     - _ShowBottom: 0
