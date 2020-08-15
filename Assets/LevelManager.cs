@@ -7,6 +7,11 @@ public class LevelManager : MonoBehaviour
     public Camera cam1, cam2, cam3;
     public Rect cam1Rect, cam2Rect, cam3Rect;
 
+    public GameObject Level1, Level2, Level3;
+    public AudioSource SwitchSound;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +27,11 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void SplitScreen()
+
+    public void ShowNextSection()
     {
-        cam1.rect = new Rect(0f, .5f, 1f, .5f);
+        SwitchSound.Play();
+        Level2.SetActive(true);
     }
 
 }
