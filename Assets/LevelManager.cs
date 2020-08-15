@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -49,13 +50,12 @@ public class LevelManager : MonoBehaviour
             levelCount++;
         }
         else
-        {
-     
+        {   
             BaseCam.SetActive(true);
             BackgroundMusic.Stop();
-            LevelFinished.Play();
+            SceneManager.LoadScene("ZiedNextLevel", LoadSceneMode.Single);
         }
-        
+
     }
 
 }
