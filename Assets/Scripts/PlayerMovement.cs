@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     float m_BaseDrag;
 
 
+    public bool MovementEnabled = false;
+
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
@@ -27,12 +29,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        m_Movement.x = Input.GetAxisRaw("Horizontal");
-        m_Movement.z = Input.GetAxisRaw("Vertical");
-        m_Movement.y = 0f;
+        if (MovementEnabled) {
 
-        if (Input.GetKeyDown("space"))
-            SpawnClone();
+            m_Movement.x = Input.GetAxisRaw("Horizontal");
+            m_Movement.z = Input.GetAxisRaw("Vertical");
+            m_Movement.y = 0f;
+
+            if (Input.GetKeyDown("space"))
+                SpawnClone();
+        }
+
+        
     }
 
     void FixedUpdate()

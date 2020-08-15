@@ -14,35 +14,42 @@ public class Goal : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
 
-        if (IsPlayerOrClone(other))
+        if(other.tag == "Player")
         {
-            ++m_InsideCount;
-
-            //Trigger next scene with LM
+            Debug.Log("Found Player");
             lm.ShowNextSection();
-
-
-            // First one to get inside
-            if (m_InsideCount == 1)
-            {
-                var sr = GetComponentInChildren<SpriteRenderer>();
-                sr.color = Color.green;
-                IsPressed = true;
-            }
+            gameObject.GetComponent<BoxCollider>().enabled = false;
         }
+
+        //if (IsPlayerOrClone(other))
+        //{
+        //    ++m_InsideCount;
+
+        //    //Trigger next scene with LM
+        //    lm.ShowNextSection();
+
+
+        //    // First one to get inside
+        //    if (m_InsideCount == 1)
+        //    {
+        //        var sr = GetComponentInChildren<SpriteRenderer>();
+        //        sr.color = Color.green;
+        //        IsPressed = true;
+        //    }
+        //}
     }
     void OnTriggerExit (Collider other)
     {
-        if (IsPlayerOrClone(other))
-        {
-            --m_InsideCount;
-            if (m_InsideCount == 0)
-            {
-                var sr = GetComponentInChildren<SpriteRenderer>();
-                sr.color = Color.red;
-                IsPressed = false;
-            }
-        }
+        //if (IsPlayerOrClone(other))
+        //{
+        //    --m_InsideCount;
+        //    if (m_InsideCount == 0)
+        //    {
+        //        var sr = GetComponentInChildren<SpriteRenderer>();
+        //        sr.color = Color.red;
+        //        IsPressed = false;
+        //    }
+        //}
     }
 
     bool IsPlayerOrClone(Collider other)

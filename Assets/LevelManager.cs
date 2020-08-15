@@ -11,11 +11,13 @@ public class LevelManager : MonoBehaviour
     public AudioSource SwitchSound;
 
 
+    public GameObject Level1Player, Level2Player, Level3Player;
 
+    public int levelCount = 1;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Level1Player.GetComponent<PlayerMovement>().MovementEnabled = true;
     }
 
     // Update is called once per frame
@@ -30,8 +32,23 @@ public class LevelManager : MonoBehaviour
 
     public void ShowNextSection()
     {
-        SwitchSound.Play();
-        Level2.SetActive(true);
+        if(levelCount == 1)
+        {
+            Level1Player.GetComponent<PlayerMovement>().MovementEnabled = false;
+            Level1Player.GetComponent<Rigidbody>().isKinematic = true;
+            SwitchSound.Play();
+            Level2.SetActive(true);
+            Level2Player.GetComponent<PlayerMovement>().MovementEnabled = true;
+            levelCount++;
+        }else if(levelCount == 2)
+        {
+            Level2Player.GetComponent<PlayerMovement>().MovementEnabled = false;
+            SwitchSound.Play();
+            Level3.SetActive(true);
+            Level3Player.GetComponent<PlayerMovement>().MovementEnabled = true;
+            levelCount++;
+        }
+        
     }
 
 }
