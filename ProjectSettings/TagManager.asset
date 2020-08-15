@@ -43,3 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: RecordedTrail
+    uniqueID: 3893998905
+    locked: 0
+  - name: ShadowTrail
+    uniqueID: 2044816931
+    locked: 0
