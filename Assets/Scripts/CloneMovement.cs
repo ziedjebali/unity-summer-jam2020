@@ -1,26 +1,36 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class CloneMovement : MonoBehaviour
 {
-    public Queue<MovementInfo> presetMovements;
+    [SerializeField] int k_EndFramesOmitted = 6;
 
-    Rigidbody rb;
+    Rigidbody m_Rigidbody;
+    Queue<MovementInfo> m_PresetMovements;
     
     
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        m_Rigidbody = GetComponent<Rigidbody>();
     }
     
     void FixedUpdate()
     {
-        if (presetMovements.Any())
+        if (m_PresetMovements.Count > k_EndFramesOmitted)
         {
-            var moveInfo = presetMovements.Dequeue();
-            rb.drag = moveInfo.dragValue;
-            rb.AddForce(moveInfo.forceValue);
+            var moveInfo = m_PresetMovements.Dequeue();
+            m_Rigidbody.drag = moveInfo.dragValue;
+            m_Rigidbody.AddForce(moveInfo.forceValue);
+            m_Rigidbody.velocity = moveInfo.velocityValue;
         }
+        else
+        {
+            m_Rigidbody.velocity = Vector3.zero;
+        }
+    }
+
+    public void SetMovements(Queue<MovementInfo> value)
+    {
+        m_PresetMovements = value;
     }
 }

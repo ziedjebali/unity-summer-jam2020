@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float m_Deceleration = 5f;
     
     [Header("References")]
-    [SerializeField] GameObject m_ClonePrefab = null;
     [SerializeField] PlayerTrail m_PlayerTrail = null;
     
     Rigidbody m_Rigidbody;
@@ -30,9 +29,6 @@ public class PlayerMovement : MonoBehaviour
         m_Movement.x = Input.GetAxisRaw("Horizontal");
         m_Movement.z = Input.GetAxisRaw("Vertical");
         m_Movement.y = 0f;
-
-        if (Input.GetKeyDown("space"))
-            SpawnClone();
     }
 
     void FixedUpdate()
@@ -44,28 +40,21 @@ public class PlayerMovement : MonoBehaviour
             m_Rigidbody.drag = m_Deceleration;
             
             moveInfo.dragValue = m_Deceleration;
-            moveInfo.forceValue = new Vector3();
+            moveInfo.forceValue = Vector3.zero;
         }
         else
         {
             m_Rigidbody.drag = m_BaseDrag;
 
             var normalizedMovement = m_Movement.normalized;
-            var forceToAdd = m_Rigidbody.velocity.magnitude < m_MaxSpeed ? normalizedMovement * m_Force : new Vector3();
+            var forceToAdd = m_Rigidbody.velocity.magnitude < m_MaxSpeed ? normalizedMovement * m_Force : Vector3.zero;
             m_Rigidbody.AddForce(forceToAdd);
             
             moveInfo.dragValue = m_BaseDrag;
             moveInfo.forceValue = forceToAdd;
         }
 
+        moveInfo.velocityValue = m_Rigidbody.velocity;
         m_PlayerTrail.AddTrail(moveInfo);
-    }
-
-    void SpawnClone()
-    {
-        var playerTransform = transform; // apparently multiple property access is inefficient
-        var clone = Instantiate(m_ClonePrefab, playerTransform.position, playerTransform.rotation);
-        var cm = clone.GetComponent<CloneMovement>();
-        cm.presetMovements = new Queue<MovementInfo>(m_PlayerTrail.GetTrailMovement());
     }
 }
