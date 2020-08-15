@@ -1252,6 +1252,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3806602547167471610, guid: a958960aab5195c41b37eab1e302d412,
+        type: 3}
+      propertyPath: m_CompensationSmoothing
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3806602547167471610, guid: a958960aab5195c41b37eab1e302d412,
+        type: 3}
+      propertyPath: m_Acceleration
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3806602547167471610, guid: a958960aab5195c41b37eab1e302d412,
+        type: 3}
+      propertyPath: m_Deceleration
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3806602547167471610, guid: a958960aab5195c41b37eab1e302d412,
+        type: 3}
+      propertyPath: m_MaxSpeed
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3806602547167471613, guid: a958960aab5195c41b37eab1e302d412,
         type: 3}
       propertyPath: m_Name

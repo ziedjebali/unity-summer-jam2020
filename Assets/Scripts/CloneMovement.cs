@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CloneMovement : MonoBehaviour
 {
-    [SerializeField] int k_EndFramesOmitted = 7;
+    [SerializeField] int m_EndFramesOmitted = 7;
 
     Rigidbody m_Rigidbody;
     Queue<MovementInfo> m_PresetMovements;
@@ -16,11 +16,11 @@ public class CloneMovement : MonoBehaviour
     
     void FixedUpdate()
     {
-        if (m_PresetMovements.Count > k_EndFramesOmitted)
+        if (m_PresetMovements.Count > m_EndFramesOmitted)
         {
             var moveInfo = m_PresetMovements.Dequeue();
-            m_Rigidbody.drag = moveInfo.dragValue;
-            m_Rigidbody.AddForce(moveInfo.forceValue);
+//            m_Rigidbody.drag = moveInfo.dragValue;
+//            m_Rigidbody.AddForce(moveInfo.forceValue);
             m_Rigidbody.velocity = moveInfo.velocityValue;
         }
         else
