@@ -71,7 +71,7 @@ TrailRenderer:
   m_SortingLayerID: 2044816931
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 2578496119032950140}
   - component: {fileID: 2578496119032950143}
   - component: {fileID: 2578496119032950142}
-  - component: {fileID: 2578496119032950129}
+  - component: {fileID: 6079553608529551473}
   - component: {fileID: 2578496119032950128}
   - component: {fileID: 2578496119032950131}
   m_Layer: 10
@@ -220,8 +220,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2578496119032950129
-BoxCollider:
+--- !u!135 &6079553608529551473
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -231,7 +231,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.55
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2578496119032950128
 Rigidbody:

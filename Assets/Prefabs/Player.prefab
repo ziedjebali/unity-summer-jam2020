@@ -148,14 +148,14 @@ GameObject:
   - component: {fileID: 3806602547167471609}
   - component: {fileID: 3806602547167471608}
   - component: {fileID: 3806602547167471615}
-  - component: {fileID: 3806602547167471614}
+  - component: {fileID: 2881251231534075222}
   - component: {fileID: 3806602547167471611}
   - component: {fileID: 3806602547167471610}
   - component: {fileID: 1536238454}
   - component: {fileID: 1536238461}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,8 +222,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3806602547167471614
-BoxCollider:
+--- !u!135 &2881251231534075222
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -233,7 +233,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3806602547167471611
 Rigidbody:
@@ -263,9 +263,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbbe0ecf71cfb5b4e96894f7cec23bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Force: 100
-  m_MaxSpeed: 10
-  m_Deceleration: 7
+  m_Acceleration: 50
+  m_MaxSpeed: 12
+  m_Deceleration: 50
   m_PlayerTrail: {fileID: 1536238454}
   MovementEnabled: 1
 --- !u!114 &1536238454
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae35c775989ff248addd11d7fb47878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrailTimerInSeconds: 2
+  m_TrailTimerInSeconds: 2.5
   m_TrailRenderer: {fileID: 1536238461}
   m_ClonePrefab: {fileID: 2578496119032950130, guid: d62e64a5ef588ba4e898740b2cfa5fd5,
     type: 3}
