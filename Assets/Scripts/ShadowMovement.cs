@@ -9,6 +9,7 @@ public class ShadowMovement : MonoBehaviour
     
     Rigidbody rb;
     
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -16,13 +17,13 @@ public class ShadowMovement : MonoBehaviour
     
     void FixedUpdate()
     {
-        if (m_PlayerMovement.m_ShadowMovement.Count != m_PlayerMovement.m_MaxMovementCount)
+        if (m_PlayerMovement.ShadowMovement.Count != m_PlayerMovement.MaxMovementCount)
         {
             // Do nothing, the initial delay is not over.
         }
         else
         {
-            var moveInfo = m_PlayerMovement.m_ShadowMovement.Peek();
+            var moveInfo = m_PlayerMovement.ShadowMovement.Peek();
             rb.drag = moveInfo.dragValue;
             rb.AddForce(moveInfo.forceValue);
         }
