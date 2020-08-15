@@ -16,7 +16,9 @@ public class PlayerMovement : MonoBehaviour
     // Movement
     Vector3 m_Movement;
     float m_BaseDrag;
-
+    
+    public bool MovementEnabled = false;
+    
 
     void Start()
     {
@@ -26,9 +28,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        m_Movement.x = Input.GetAxisRaw("Horizontal");
-        m_Movement.z = Input.GetAxisRaw("Vertical");
-        m_Movement.y = 0f;
+        if (MovementEnabled)
+        {
+            m_Movement.x = Input.GetAxisRaw("Horizontal");
+            m_Movement.z = Input.GetAxisRaw("Vertical");
+            m_Movement.y = 0f;
+        }
     }
 
     void FixedUpdate()
