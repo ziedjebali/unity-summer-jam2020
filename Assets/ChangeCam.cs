@@ -9,6 +9,7 @@ public class ChangeCam : MonoBehaviour
     public bool camIsSouth = true;
     public float duration;
     public GameObject player, cam;
+    public AudioSource goNorthChime, goSouthChime;
 
     // Start is called before the first frame update
     void Start()
@@ -28,18 +29,23 @@ public class ChangeCam : MonoBehaviour
         {
             if (camIsSouth)
             {
+                goNorthChime.Play();
                 player.GetComponent<PlayerMovement>().MovementEnabled = false;
-                player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                player.GetComponent<Rigidbody>().Sleep();
                 cam.transform.DOMove(cameraNorth, duration).OnComplete(() => player.GetComponent<PlayerMovement>().ToggleMovement());
                 camIsSouth = false;
-            } else
+                player.GetComponent<Rigidbody>().WakeUp();
+            }
+            else
             {
+                goSouthChime.Play();
                 player.GetComponent<PlayerMovement>().MovementEnabled = false;
-                player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                player.GetComponent<Rigidbody>().Sleep();
                 cam.transform.DOMove(cameraSouth, duration).OnComplete(() => player.GetComponent<PlayerMovement>().ToggleMovement());
                 camIsSouth = true;
+                player.GetComponent<Rigidbody>().WakeUp();
             }
-            
+
         }
     }
 }

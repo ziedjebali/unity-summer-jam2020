@@ -53,78 +53,35 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        MovementInfo moveInfo;
+        if (MovementEnabled)
+        {
+            MovementInfo moveInfo;
 
-        // Compute acceleration
-        var direction = m_Movement.normalized;
-        var velocityToAdd = direction * m_Acceleration * Time.fixedDeltaTime;
-        var newVelocity = m_Rigidbody.velocity + velocityToAdd;
-        
-        // Compute deceleration
-        if (Mathf.Approximately(m_Movement.x, 0.0f))
-            newVelocity.x = ComputeDeceleration(m_Rigidbody.velocity.x);
-        if (Mathf.Approximately(m_Movement.z, 0.0f))
-            newVelocity.z = ComputeDeceleration(m_Rigidbody.velocity.z);
-        
-        // Set new velocity
-        if (newVelocity.magnitude < m_MaxSpeed)
-        {
-            moveInfo.velocityValue = newVelocity;
-            m_Rigidbody.velocity = newVelocity;
+            // Compute acceleration
+            var direction = m_Movement.normalized;
+            var velocityToAdd = direction * m_Acceleration * Time.fixedDeltaTime;
+            var newVelocity = m_Rigidbody.velocity + velocityToAdd;
+
+            // Compute deceleration
+            if (Mathf.Approximately(m_Movement.x, 0.0f))
+                newVelocity.x = ComputeDeceleration(m_Rigidbody.velocity.x);
+            if (Mathf.Approximately(m_Movement.z, 0.0f))
+                newVelocity.z = ComputeDeceleration(m_Rigidbody.velocity.z);
+
+            // Set new velocity
+            if (newVelocity.magnitude < m_MaxSpeed)
+            {
+                moveInfo.velocityValue = newVelocity;
+                m_Rigidbody.velocity = newVelocity;
+            }
+            else
+            {
+                moveInfo.velocityValue = m_Rigidbody.velocity;
+            }
+            m_PlayerTrail.AddTrail(moveInfo);
         }
-        else
-        {
-            moveInfo.velocityValue = m_Rigidbody.velocity;
-        }
-        m_PlayerTrail.AddTrail(moveInfo);
         
-//        // Not holding down any move buttons
-//        if (Mathf.Approximately(m_Movement.x, 0.0f) && Mathf.Approximately(m_Movement.z, 0.0f))
-//        {
-//            m_Rigidbody.velocity = new Vector3(ComputeDeceleration(m_Rigidbody.velocity.x), 0f, ComputeDeceleration(m_Rigidbody.velocity.z));
-//            
-//            moveInfo.dragValue = m_Deceleration;
-//            moveInfo.forceValue = Vector3.zero;
-//        }
-//        else
-//        {
-//            Vector3 forceToAdd = Vector3.zero;
-//            
-//            // Holding down only one direction
-//            if (Mathf.Approximately(m_Movement.x, 0.0f) || Mathf.Approximately(m_Movement.z, 0.0f))
-//                forceToAdd = m_Rigidbody.velocity.magnitude < m_MaxSpeed ? m_Movement.normalized * m_Force : Vector3.zero;
-//            
-//            // Holding down only multiple directions
-//            else
-//            {
-//                var velocityDifference = Mathf.Abs(m_Rigidbody.velocity.x) - Mathf.Abs(m_Rigidbody.velocity.z);
-//
-//
-//
-//                if (velocityDifference > m_CompensationThreshold) // Should compensate towards Z
-//                {
-//                    var newDirection = new Vector3(m_CompensationSmoothing * m_Movement.x, 0, m_Movement.z);
-//                    forceToAdd = m_Rigidbody.velocity.magnitude < m_MaxSpeed ? newDirection.normalized * m_Force : Vector3.zero;
-//                }
-//                else if (velocityDifference < m_CompensationThreshold) // Should compensate towards X
-//                {
-//                    var newDirection = new Vector3(m_Movement.x, 0, m_CompensationSmoothing * m_Movement.z);
-//                    forceToAdd = m_Rigidbody.velocity.magnitude < m_MaxSpeed ? newDirection.normalized * m_Force : Vector3.zero;
-//                }
-//                else // No compensation needed
-//                    forceToAdd = m_Rigidbody.velocity.magnitude < m_MaxSpeed ? m_Movement.normalized * m_Force : Vector3.zero;
-//            }
-//            
-//            m_Rigidbody.drag = m_BaseDrag;
-//            m_Rigidbody.AddForce(forceToAdd);
-//            
-//            moveInfo.dragValue = m_BaseDrag;
-//            moveInfo.forceValue = forceToAdd;
-//        }
-//        
-//
-//        moveInfo.velocityValue = m_Rigidbody.velocity;
-//        m_PlayerTrail.AddTrail(moveInfo);
+        
     }
     
     float ComputeDeceleration(float speed)
