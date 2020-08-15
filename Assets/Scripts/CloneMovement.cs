@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CloneMovement : MonoBehaviour
 {
-    [SerializeField] int k_EndFramesOmitted = 6;
+    [SerializeField] int k_EndFramesOmitted = 7;
 
     Rigidbody m_Rigidbody;
     Queue<MovementInfo> m_PresetMovements;

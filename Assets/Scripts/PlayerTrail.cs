@@ -11,9 +11,8 @@ public class PlayerTrail : MonoBehaviour
     [SerializeField] GameObject m_ClonePrefab = null;
     
     bool m_IsTrailing;
+    int m_TrailMaxCount;
     Queue<MovementInfo> m_TrailMovement;
-    
-    public int TrailMaxCount { get; private set; }
 
     
     void Start()
@@ -24,27 +23,37 @@ public class PlayerTrail : MonoBehaviour
         m_IsTrailing= false;
         m_TrailMovement = new Queue<MovementInfo>();
         
-        TrailMaxCount = (int)(m_TrailTimerInSeconds * 50); // 50 calls per second of FixedUpdate
+        m_TrailMaxCount = (int)(m_TrailTimerInSeconds * 50); // 50 calls per second of FixedUpdate
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        if (ShouldStartTrail())
         {
             m_IsTrailing = true;
             m_TrailRenderer.emitting = true;
             ClearTrail();
         }
-
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        
+        if (ShouldStopTrail())
         {
             m_IsTrailing = false;
             m_TrailRenderer.emitting = false;
         }
-
-        if (Input.GetKeyDown("space"))
+        
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             SpawnClone();
+        }
+    }
+    
+    public void AddTrail(MovementInfo moveInfo)
+    {
+        if (m_IsTrailing)
+        {
+            m_TrailMovement.Enqueue(moveInfo);
+            if (m_TrailMovement.Count > m_TrailMaxCount)
+                m_TrailMovement.Dequeue();
         }
     }
     
@@ -56,16 +65,6 @@ public class PlayerTrail : MonoBehaviour
         cm.SetMovements(new Queue<MovementInfo>(GetTrailMovement()));
     }
 
-    public void AddTrail(MovementInfo moveInfo)
-    {
-        if (m_IsTrailing)
-        {
-            m_TrailMovement.Enqueue(moveInfo);
-            if (m_TrailMovement.Count == TrailMaxCount)
-                m_TrailMovement.Dequeue();
-        }
-    }
-
     Queue<MovementInfo> GetTrailMovement()
     {
         var trail = new Queue<MovementInfo>(m_TrailMovement);
@@ -74,11 +73,19 @@ public class PlayerTrail : MonoBehaviour
         return trail;
     }
     
-    
-
     void ClearTrail()
     {
         m_TrailMovement = new Queue<MovementInfo>();
         m_TrailRenderer.Clear();
+    }
+
+    bool ShouldStartTrail()
+    {
+        return Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift);
+    }
+
+    bool ShouldStopTrail()
+    {
+        return Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift) || m_TrailMovement.Count == m_TrailMaxCount;
     }
 }
