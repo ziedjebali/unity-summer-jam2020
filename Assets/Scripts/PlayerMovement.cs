@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")]
     [SerializeField] private float m_Force = 20f;
     [SerializeField] float m_MaxSpeed = 10f;
     [SerializeField] float m_Deceleration = 5f;
     
-    [Header("Cloning")]
-    [SerializeField] float m_CloneTimer = 3f; // In seconds
+    [Header("References")]
     [SerializeField] GameObject m_ClonePrefab = null;
-
+    [SerializeField] PlayerTrail m_PlayerTrail = null;
+    
     Rigidbody m_Rigidbody;
     
+    // Movement
     Vector3 m_Movement;
     float m_BaseDrag;
     
-    public Queue<MovementInfo> m_AccumulatedMovement { get; private set; }
-    public Queue<MovementInfo> m_ShadowMovement { get; private set; }
-    public int m_MaxMovementCount { get; private set; }
+    // TODO: remove both if not using shadow anymore
+    public Queue<MovementInfo> ShadowMovement { get; private set; }
+    public int MaxMovementCount { get; private set; }
 
+    
     void Start()
     {
-        m_AccumulatedMovement = new Queue<MovementInfo>();
-        m_ShadowMovement = new Queue<MovementInfo>();
+        ShadowMovement = new Queue<MovementInfo>();
         m_Rigidbody = GetComponent<Rigidbody>();
         m_BaseDrag = m_Rigidbody.drag;
-        m_MaxMovementCount = (int)(m_CloneTimer * 50); // 50 calls per second of FixedUpdate
+        MaxMovementCount = m_PlayerTrail.TrailMaxCount * 50; // 50 calls per second of FixedUpdate
     }
 
     void Update()
@@ -55,15 +55,18 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             m_Rigidbody.drag = m_BaseDrag;
-            
-            var forceToAdd = m_Rigidbody.velocity.magnitude < m_MaxSpeed ? m_Movement * m_Force: new Vector3();
+
+            var normalizedMovement = m_Movement.normalized;
+            var forceToAdd = m_Rigidbody.velocity.magnitude < m_MaxSpeed ? normalizedMovement * m_Force : new Vector3();
             m_Rigidbody.AddForce(forceToAdd);
             
             moveInfo.dragValue = m_BaseDrag;
             moveInfo.forceValue = forceToAdd;
         }
 
-        AccumulateMovement(moveInfo);
+        // TODO: Remove when removing shadow
+//        AccumulateMovement(moveInfo);
+        m_PlayerTrail.AddTrail(moveInfo);
     }
 
     void SpawnClone()
@@ -71,18 +74,14 @@ public class PlayerMovement : MonoBehaviour
         var playerTransform = transform; // apparently multiple property access is inefficient
         var clone = Instantiate(m_ClonePrefab, playerTransform.position, playerTransform.rotation);
         var cm = clone.GetComponent<CloneMovement>();
-        cm.presetMovements = new Queue<MovementInfo>(m_AccumulatedMovement);
-        m_AccumulatedMovement = new Queue<MovementInfo>();
+        cm.presetMovements = new Queue<MovementInfo>(m_PlayerTrail.GetTrailMovement());
     }
-
-    void AccumulateMovement(MovementInfo nextMovement)
-    {
-        if (m_AccumulatedMovement.Count == m_MaxMovementCount)
-            m_AccumulatedMovement.Dequeue();
-        m_AccumulatedMovement.Enqueue(nextMovement);
-        
-        if (m_ShadowMovement.Count == m_MaxMovementCount)
-            m_ShadowMovement.Dequeue();
-        m_ShadowMovement.Enqueue(nextMovement);
-    }
+    
+//    TODO: Remove when removing shadow
+//    void AccumulateMovement(MovementInfo nextMovement)
+//    {
+//        if (m_ShadowMovement.Count == m_MaxMovementCount)
+//            m_ShadowMovement.Dequeue();
+//        m_ShadowMovement.Enqueue(nextMovement);
+//    }
 }

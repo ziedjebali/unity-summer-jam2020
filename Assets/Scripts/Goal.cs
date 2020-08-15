@@ -8,6 +8,7 @@ public class Goal : MonoBehaviour
 
     int m_InsideCount;
     
+    
     // TODO: Find a better way, some edge cases don't work (e.g. when clone is destroyed while inside the goal)
     void OnTriggerEnter(Collider other)
     {
