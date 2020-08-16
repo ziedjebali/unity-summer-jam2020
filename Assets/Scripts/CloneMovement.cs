@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CloneMovement : MonoBehaviour
 {
-    const float k_DelayBeforeDestroy = 1.0f;
+    const float k_DelayBeforeDestroy = 0.5f;
     
     [SerializeField] float m_EndOffset = 0.4f;
     [SerializeField] int m_EndOffsetCount = 1;
