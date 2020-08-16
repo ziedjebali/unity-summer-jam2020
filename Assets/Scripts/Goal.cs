@@ -9,6 +9,7 @@ public class Goal : MonoBehaviour
     int m_InsideCount;
 
     public LevelManager lm;
+    public Material changedMaterial;
     
     // TODO: Find a better way, some edge cases don't work (e.g. when clone is destroyed while inside the goal)
     void OnTriggerEnter(Collider other)
@@ -19,6 +20,8 @@ public class Goal : MonoBehaviour
             Debug.Log("Found Player");
             lm.ShowNextSection();
             gameObject.GetComponent<BoxCollider>().enabled = false;
+
+            gameObject.GetComponentInChildren<Renderer>().material = changedMaterial;
         }
 
         //if (IsPlayerOrClone(other))
