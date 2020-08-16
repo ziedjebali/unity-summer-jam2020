@@ -261,4 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685a3cd2e4fa0e147b68dc3e54d6d753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EndFramesOmitted: 0
+  m_EndOffset: 0.1
+  m_EndOffsetCount: 3
+  m_StartOffset: 0.3

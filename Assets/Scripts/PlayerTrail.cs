@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerTrail : MonoBehaviour
@@ -51,6 +52,10 @@ public class PlayerTrail : MonoBehaviour
     {
         if (m_IsTrailing)
         {
+            if (!m_TrailMovement.Any() && Mathf.Approximately(moveInfo.velocityValue.magnitude, 0.0f))
+                return;
+            
+            
             m_TrailMovement.Enqueue(moveInfo);
             if (m_TrailMovement.Count > m_TrailMaxCount)
                 m_TrailMovement.Dequeue();
