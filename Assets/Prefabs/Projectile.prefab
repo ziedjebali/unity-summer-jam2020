@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2203206607061822135}
   - component: {fileID: 8591395632247935730}
   - component: {fileID: 8397461702185265625}
-  - component: {fileID: 5931794477192815571}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Projectile
@@ -80,20 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &5931794477192815571
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464904970466010837}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2.0000005
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6992705345342798476
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +90,7 @@ GameObject:
   - component: {fileID: 6992705345342798479}
   - component: {fileID: 6992705345342798478}
   - component: {fileID: 5158111930703585985}
+  - component: {fileID: 7534980391470998132}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Projectile
@@ -156,3 +142,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
+--- !u!136 &7534980391470998132
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992705345342798476}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.31
+  m_Height: 3.39
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
