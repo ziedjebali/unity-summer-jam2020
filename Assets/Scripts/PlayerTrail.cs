@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerTrail : MonoBehaviour
 {
+    const float k_Cooldown = 0.5f;
+    
     [SerializeField] float m_TrailTimerInSeconds = 2f;
     
     [Header("References")]
@@ -13,6 +16,7 @@ public class PlayerTrail : MonoBehaviour
     bool m_IsTrailing;
     int m_TrailMaxCount;
     Queue<MovementInfo> m_TrailMovement;
+    bool m_OnCooldown = false;
 
     
     void Start()
@@ -41,9 +45,11 @@ public class PlayerTrail : MonoBehaviour
             m_TrailRenderer.emitting = false;
         }
         
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !m_OnCooldown)
         {
+            m_OnCooldown = true;
             SpawnClone();
+            StartCoroutine(DoCooldown());
         }
     }
     
@@ -51,6 +57,10 @@ public class PlayerTrail : MonoBehaviour
     {
         if (m_IsTrailing)
         {
+            if (!m_TrailMovement.Any() && Mathf.Approximately(moveInfo.velocityValue.magnitude, 0.0f))
+                return;
+            
+            
             m_TrailMovement.Enqueue(moveInfo);
             if (m_TrailMovement.Count > m_TrailMaxCount)
                 m_TrailMovement.Dequeue();
@@ -68,7 +78,6 @@ public class PlayerTrail : MonoBehaviour
     Queue<MovementInfo> GetTrailMovement()
     {
         var trail = new Queue<MovementInfo>(m_TrailMovement);
-        ClearTrail();
         
         return trail;
     }
@@ -87,5 +96,11 @@ public class PlayerTrail : MonoBehaviour
     bool ShouldStopTrail()
     {
         return Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift) || m_TrailMovement.Count == m_TrailMaxCount;
+    }
+    
+    IEnumerator DoCooldown()
+    {
+        yield return new WaitForSeconds(k_Cooldown);
+        m_OnCooldown = false;
     }
 }
