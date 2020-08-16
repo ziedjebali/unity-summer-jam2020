@@ -25,7 +25,7 @@ public class CloneMovement : MonoBehaviour
 
         // continue last movement a bit more
         var list = m_PresetMovements.ToArray().ToList();
-        for (int i = m_PresetMovements.Count - 1; i >= 0; ++i)
+        for (int i = m_PresetMovements.Count - 1; i >= 0; --i)
         {
             if (Mathf.Approximately(list[i].velocityValue.magnitude, 0.0f))
                 continue;
