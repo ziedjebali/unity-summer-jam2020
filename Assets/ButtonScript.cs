@@ -7,10 +7,14 @@ public class ButtonScript : MonoBehaviour
     
     public float timer, activeTime;
     public bool active = false;
+    public Material changedMat;
+
+    Material defaultMat;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        defaultMat = gameObject.GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame
@@ -23,6 +27,8 @@ public class ButtonScript : MonoBehaviour
             {
                 active = false;
                 timer = activeTime;
+
+                gameObject.GetComponent<Renderer>().material = defaultMat;
             }
         }
     }
@@ -33,6 +39,8 @@ public class ButtonScript : MonoBehaviour
         {
             active = true;
             timer = activeTime;
+
+            gameObject.GetComponent<Renderer>().material = changedMat;
         }
     }
 }
