@@ -45,7 +45,7 @@ public class PlayerTrail : MonoBehaviour
             m_TrailRenderer.emitting = false;
         }
         
-        if (Input.GetKeyDown(KeyCode.Space) && !m_OnCooldown)
+        if (Input.GetKeyDown(KeyCode.Space) && !m_OnCooldown && m_TrailMovement != null && m_TrailMovement.Any())
         {
             m_OnCooldown = true;
             SpawnClone();
