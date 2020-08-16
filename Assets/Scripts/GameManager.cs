@@ -31,6 +31,11 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(SceneIndex, LoadSceneMode.Single);
     }
 
+    public void ResetScene()
+    {
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
 
     public void NextLevel()
     {

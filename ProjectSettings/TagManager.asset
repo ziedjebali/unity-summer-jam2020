@@ -7,6 +7,8 @@ TagManager:
   - Goal
   - Shadow
   - Clone
+  - GameManager
+  - Projectile
   layers:
   - Default
   - TransparentFX
