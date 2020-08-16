@@ -12,7 +12,9 @@ public class GameManager : Singleton<GameManager>
     public GameState State { get; private set; }
     public RectTransform blackPanel;
     public AudioSource LightSwitchSound;
-    public GameObject WallLevel1to2, Level4;
+    public GameObject WallLevel1to2, Level4, Level5;
+
+    public GameObject[] Level4Objects;
 
     public Animator LevelAnimator;
 
@@ -43,7 +45,11 @@ public class GameManager : Singleton<GameManager>
                 LevelAnimator.Play("Level3ToLevel4", 5);
                 break;
             case 4:
-                Level4Text.gameObject.SetActive(true);
+                Level5.gameObject.SetActive(true);
+                foreach(GameObject obj in Level4Objects)
+                {
+                    EnableGravity(obj);
+                }
                 break;
 
             default:
@@ -53,5 +59,13 @@ public class GameManager : Singleton<GameManager>
         }
         LevelCounter++;
 
+
     }
+
+    void EnableGravity(GameObject go) {
+        go.GetComponent<Rigidbody>().isKinematic = false;
+        go.GetComponent<Rigidbody>().useGravity = true;
+        Destroy(go, 15f);
+    }
+
 }
