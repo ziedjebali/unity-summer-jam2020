@@ -10,6 +10,8 @@ public class Goal : MonoBehaviour
 
     public LevelManager lm;
     public Material changedMaterial;
+
+    public bool usedTwice = false;
     
     // TODO: Find a better way, some edge cases don't work (e.g. when clone is destroyed while inside the goal)
     void OnTriggerEnter(Collider other)
@@ -19,11 +21,17 @@ public class Goal : MonoBehaviour
         {
             Debug.Log("Found Player");
             gm.NextLevel();
-            
-            lm.ShowNextSection();
-            gameObject.GetComponent<BoxCollider>().enabled = false;
+            if (!usedTwice)
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = false;
 
-            gameObject.GetComponentInChildren<Renderer>().material = changedMaterial;
+                gameObject.GetComponentInChildren<Renderer>().material = changedMaterial;
+            }
+            else
+            {
+                usedTwice = false;
+            }
+            
         }
 
         //if (IsPlayerOrClone(other))
