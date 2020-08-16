@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1010,7 +1010,7 @@ GameObject:
   - component: {fileID: 165740498}
   - component: {fileID: 165740494}
   m_Layer: 0
-  m_Name: LevelManager
+  m_Name: TutManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1793,7 +1793,8 @@ PrefabInstance:
       propertyPath: lm
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8166547964665788731, guid: 5a9a21652a57d994f87b7b58de471631, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5a9a21652a57d994f87b7b58de471631, type: 3}
 --- !u!4 &317078277 stripped
 Transform:
@@ -1801,6 +1802,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 317078276}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &317078278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6799092092229802937, guid: 5a9a21652a57d994f87b7b58de471631,
+    type: 3}
+  m_PrefabInstance: {fileID: 317078276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &317078279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317078278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec294398c54fe824f856faae925adc00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutManager: {fileID: 165740494}
 --- !u!1 &341156108 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3806602547167471613, guid: a958960aab5195c41b37eab1e302d412,
@@ -4944,7 +4964,8 @@ PrefabInstance:
       propertyPath: lm
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8166547964665788731, guid: 5a9a21652a57d994f87b7b58de471631, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5a9a21652a57d994f87b7b58de471631, type: 3}
 --- !u!4 &1612558450 stripped
 Transform:
@@ -4952,6 +4973,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1612558449}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1612558451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6799092092229802937, guid: 5a9a21652a57d994f87b7b58de471631,
+    type: 3}
+  m_PrefabInstance: {fileID: 1612558449}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1612558452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612558451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec294398c54fe824f856faae925adc00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutManager: {fileID: 165740494}
 --- !u!1001 &1666575148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5283,7 +5323,8 @@ PrefabInstance:
       propertyPath: lm
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8166547964665788731, guid: 5a9a21652a57d994f87b7b58de471631, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5a9a21652a57d994f87b7b58de471631, type: 3}
 --- !u!4 &1867564674 stripped
 Transform:
@@ -5291,6 +5332,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1867564673}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1867564675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6799092092229802937, guid: 5a9a21652a57d994f87b7b58de471631,
+    type: 3}
+  m_PrefabInstance: {fileID: 1867564673}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1867564676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867564675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec294398c54fe824f856faae925adc00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutManager: {fileID: 165740494}
 --- !u!4 &1886001603 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 391598659569062368, guid: 116b82c76e770364a9eed8066c130267,
