@@ -854,6 +854,11 @@ PrefabInstance:
       propertyPath: usedTwice
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8166547964665788731, guid: 5a9a21652a57d994f87b7b58de471631,
+        type: 3}
+      propertyPath: sceneIndex
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a9a21652a57d994f87b7b58de471631, type: 3}
 --- !u!4 &679535999 stripped
