@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: 'Team tree: Anita, Zied & Steven'
   productName: unity-summer-jam2020
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
