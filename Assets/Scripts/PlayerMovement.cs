@@ -45,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if(transform.position.y <= -5)
+        {
+            gm.ResetScene();
+        }
+
         if (MovementEnabled)
         {
             m_Movement.x = Input.GetAxisRaw("Horizontal");

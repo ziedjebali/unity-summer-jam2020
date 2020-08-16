@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -148,8 +148,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 12235514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.3, y: -0.63, z: 7.12}
-  m_LocalScale: {x: 3.4311993, y: 1.0500001, z: -18.504435}
+  m_LocalPosition: {x: 25.3, y: -0.63, z: 6.663}
+  m_LocalScale: {x: 3.431201, y: 1.0500001, z: -17.589739}
   m_Children: []
   m_Father: {fileID: 1698501121}
   m_RootOrder: 8
