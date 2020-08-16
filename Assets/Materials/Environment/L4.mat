@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: L4
+  m_Shader: {fileID: -6465566751694194690, guid: 87f4de89f708d6149b2b103a9c07bbcd,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Boolean_FD93940A: 1
+    m_Colors:
+    - Color_64316AE1: {r: 0.86666673, g: 0.26666668, b: 0.35686275, a: 1}
+    - Color_6BAED0F3: {r: 0.1411765, g: 0.1411765, b: 0.345098, a: 1}
+    - Color_A859C03D: {r: 0.9294118, g: 0.5529412, b: 0.5764706, a: 1}
+    - Color_AC91C476: {r: 0.62352943, g: 0.75294125, b: 0.8980393, a: 1}
+    - Color_D0FEE4A1: {r: 0.050980397, g: 0.121568635, b: 0.24705884, a: 1}
+    - Color_D321F6E9: {r: 1, g: 1, b: 1, a: 0}
