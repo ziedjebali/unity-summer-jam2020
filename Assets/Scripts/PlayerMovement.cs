@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] PlayerTrail m_PlayerTrail = null;
     
     Rigidbody m_Rigidbody;
+
+    public GameManager gm;
     
     // Movement
     Vector3 m_Movement;
@@ -87,5 +89,13 @@ public class PlayerMovement : MonoBehaviour
     float ComputeDeceleration(float speed)
     {
         return Mathf.Sign(speed) * Mathf.Max(0f, Mathf.Abs(speed) - m_Deceleration * Time.fixedDeltaTime);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Projectile")
+        {
+            gm.ResetScene();
+        }
     }
 }
