@@ -52,9 +52,10 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
+            SwitchSound.Play(); 
             BaseCam.SetActive(true);
             BackgroundMusic.Stop();
-            SceneManager.LoadScene("ZiedNextLevel", LoadSceneMode.Single);
+            SceneManager.LoadScene("Level1", LoadSceneMode.Single);
         }
 
     }

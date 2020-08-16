@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: L1-3
+  m_Name: Goal_L0-3
   m_Shader: {fileID: -6465566751694194690, guid: 87f4de89f708d6149b2b103a9c07bbcd,
     type: 3}
   m_ShaderKeywords: 
@@ -23,9 +23,9 @@ Material:
     m_Floats:
     - Boolean_FD93940A: 1
     m_Colors:
-    - Color_64316AE1: {r: 0.90196085, g: 0.6039216, b: 0.60784316, a: 1}
+    - Color_64316AE1: {r: 0.9176471, g: 0.5529412, b: 0.58431375, a: 1}
     - Color_6BAED0F3: {r: 0.1411765, g: 0.1411765, b: 0.345098, a: 1}
     - Color_A859C03D: {r: 0.9294118, g: 0.5529412, b: 0.5764706, a: 1}
-    - Color_AC91C476: {r: 0.9607844, g: 0.94117653, b: 0.8980393, a: 1}
-    - Color_D0FEE4A1: {r: 0.1566316, g: 0.422035, b: 0.496, a: 1}
+    - Color_AC91C476: {r: 0.74509805, g: 0.1254902, b: 0.18823531, a: 1}
+    - Color_D0FEE4A1: {r: 0.909804, g: 0.3137255, b: 0.34901962, a: 1}
     - Color_D321F6E9: {r: 1, g: 1, b: 1, a: 0}
