@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae35c775989ff248addd11d7fb47878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrailTimerInSeconds: 2.5
+  m_TrailTimerInSeconds: 3
   m_TrailRenderer: {fileID: 1536238461}
   m_ClonePrefab: {fileID: 2578496119032950130, guid: d62e64a5ef588ba4e898740b2cfa5fd5,
     type: 3}
