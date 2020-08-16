@@ -6,7 +6,7 @@ public class Goal : MonoBehaviour
 
     public bool IsPressed { get; private set; }
 
-    int m_InsideCount;
+    public GameManager gm;
 
     public LevelManager lm;
     
@@ -17,8 +17,8 @@ public class Goal : MonoBehaviour
         if(other.tag == "Player" || other.tag == "Clone")
         {
             Debug.Log("Found Player");
-            lm.ShowNextSection();
-            gameObject.GetComponent<BoxCollider>().enabled = false;
+            gm.NextLevel();
+            
         }
 
         //if (IsPlayerOrClone(other))
