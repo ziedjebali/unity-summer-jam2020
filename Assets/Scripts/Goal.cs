@@ -11,7 +11,11 @@ public class Goal : MonoBehaviour
     public LevelManager lm;
     public Material changedMaterial;
 
+    public string NextLevelToLoad;
+
     public bool usedTwice = false;
+
+    public int sceneIndex;
     
     // TODO: Find a better way, some edge cases don't work (e.g. when clone is destroyed while inside the goal)
     void OnTriggerEnter(Collider other)
@@ -20,18 +24,20 @@ public class Goal : MonoBehaviour
         if(other.tag == "Player" || other.tag == "Clone")
         {
             Debug.Log("Found Player");
-            gm.NextLevel();
-            if (!usedTwice)
-            {
-                gameObject.GetComponent<BoxCollider>().enabled = false;
 
-                gameObject.GetComponentInChildren<Renderer>().material = changedMaterial;
-            }
-            else
-            {
-                usedTwice = false;
-            }
-            
+            gm.LoadNextLevel(sceneIndex);
+            //gm.NextLevel();
+            //if (!usedTwice)
+            //{
+            //    gameObject.GetComponent<BoxCollider>().enabled = false;
+
+            //    gameObject.GetComponentInChildren<Renderer>().material = changedMaterial;
+            //}
+            //else
+            //{
+            //    usedTwice = false;
+            //}
+
         }
 
         //if (IsPlayerOrClone(other))
