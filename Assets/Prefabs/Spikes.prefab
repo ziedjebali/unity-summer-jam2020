@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3266622204816261501}
   - component: {fileID: 3266622204813394269}
   - component: {fileID: 3266622204814492573}
+  - component: {fileID: 4487043653610817873}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -79,6 +80,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &4487043653610817873
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3266622204816498013}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f57d459deae75d04c9fe1c1042e4e9dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5391892587198805696
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +110,7 @@ GameObject:
   - component: {fileID: 5391892587198805699}
   - component: {fileID: 5391892587198805709}
   - component: {fileID: 5391892587198805698}
+  - component: {fileID: 269970525566225126}
   m_Layer: 0
   m_Name: Spike (5)
   m_TagString: Untagged
@@ -158,6 +179,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &269970525566225126
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5391892587198805696}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f57d459deae75d04c9fe1c1042e4e9dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5391892588323582557
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +209,7 @@ GameObject:
   - component: {fileID: 5391892588323582556}
   - component: {fileID: 5391892588323582558}
   - component: {fileID: 5391892588323582559}
+  - component: {fileID: 135230152831742913}
   m_Layer: 0
   m_Name: Spike (1)
   m_TagString: Untagged
@@ -237,6 +278,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &135230152831742913
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5391892588323582557}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f57d459deae75d04c9fe1c1042e4e9dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5391892588339188071
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +371,7 @@ GameObject:
   - component: {fileID: 5391892588381850078}
   - component: {fileID: 5391892588381850072}
   - component: {fileID: 5391892588381850073}
+  - component: {fileID: 5784208771118342707}
   m_Layer: 0
   m_Name: Spike (4)
   m_TagString: Untagged
@@ -379,6 +440,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &5784208771118342707
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5391892588381850079}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f57d459deae75d04c9fe1c1042e4e9dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5391892588572841022
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +470,7 @@ GameObject:
   - component: {fileID: 5391892588572841017}
   - component: {fileID: 5391892588572841019}
   - component: {fileID: 5391892588572841016}
+  - component: {fileID: 5512204107881615643}
   m_Layer: 0
   m_Name: Spike (3)
   m_TagString: Untagged
@@ -458,6 +539,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &5512204107881615643
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5391892588572841022}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f57d459deae75d04c9fe1c1042e4e9dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5391892588922883925
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +569,7 @@ GameObject:
   - component: {fileID: 5391892588922883924}
   - component: {fileID: 5391892588922883926}
   - component: {fileID: 5391892588922883927}
+  - component: {fileID: 1284743211254119950}
   m_Layer: 0
   m_Name: Spike (2)
   m_TagString: Untagged
@@ -537,3 +638,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &1284743211254119950
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5391892588922883925}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f57d459deae75d04c9fe1c1042e4e9dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
