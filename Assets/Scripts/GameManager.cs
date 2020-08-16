@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -24,6 +25,12 @@ public class GameManager : Singleton<GameManager>
     {
 
     }
+
+    public void LoadNextLevel(int SceneIndex) {
+
+        SceneManager.LoadScene(SceneIndex, LoadSceneMode.Single);
+    }
+
 
     public void NextLevel()
     {
